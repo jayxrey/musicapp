@@ -12,13 +12,13 @@ class NewSongForm extends React.Component {
     artist: "",
     album: "",
     genre: "",
-    year: 0
+    year: ""
   };
 
   componentDidMount() {
     if (this.props.songs) {
-      const { pk, song, artist, album, genre } = this.props.songs;
-      this.setState({ pk, song, artist, album, genre });
+      const { pk, song, artist, album, genre, year } = this.props.songs;
+      this.setState({ pk, song, artist, album, genre, year });
     }
   }
 
