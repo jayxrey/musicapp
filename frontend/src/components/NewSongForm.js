@@ -5,6 +5,8 @@ import axios from "axios";
 
 import { API_URL } from "../constants";
 
+var song_url = "http://localhost:8000/api/songs/"
+
 class NewSongForm extends React.Component {
   state = {
     pk: 0,
@@ -28,7 +30,7 @@ class NewSongForm extends React.Component {
 
   createSongs = e => {
     e.preventDefault();
-    axios.post(API_URL, this.state).then(() => {
+    axios.post(song_url, this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -36,7 +38,7 @@ class NewSongForm extends React.Component {
 
   editSongs = e => {
     e.preventDefault();
-    axios.put(API_URL + this.state.pk, this.state).then(() => {
+    axios.put(song_url + this.state.pk, this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });

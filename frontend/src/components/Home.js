@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
 import SongList from "./SongList";
 import NewSongModal from "./NewSongModal";
+import RatingsList from "./RatingsList";
+import RatingsModal from "./RatingsModal";
 
 import axios from "axios";
 
@@ -9,7 +11,8 @@ import { API_URL } from "../constants";
 
 class Home extends Component {
   state = {
-    songs: []
+    songs: [],
+    ratings: []
   };
 
   componentDidMount() {
@@ -20,8 +23,13 @@ class Home extends Component {
     axios.get(API_URL).then(res => this.setState({ songs: res.data }));
   };
 
+  getRatings = () => {
+    axios.get(API_URL).then(res => this.setState({ ratings: res.data }));
+  };
+
   resetState = () => {
     this.getSongs();
+    this.getRatings();
   };
 
   render() {
@@ -38,6 +46,14 @@ class Home extends Component {
         <Row>
           <Col>
             <NewSongModal create={true} resetState={this.resetState} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <RatingsList
+              ratings={this.state.ratings}
+              resetState={this.resetState}
+            />
           </Col>
         </Row>
       </Container>
