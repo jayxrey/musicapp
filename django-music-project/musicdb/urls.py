@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/songs/$', views.songs_list),
     re_path(r'^api/songs/(?P<pk>\d+)/$', views.songs_detail),
+    re_path(r'^api/ratings/(?P<song>\d+)/$', views.songs_ratings_list),
 ]

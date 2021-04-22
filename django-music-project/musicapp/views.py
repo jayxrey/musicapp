@@ -42,3 +42,25 @@ def songs_detail(request, pk):
     elif request.method == 'DELETE':
         song.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def songs_ratings_list(request, song):
+    if request.method == 'GET':
+        try:
+            ratings = Ratings.objects.filter(song_id = song)
+        except Ratings.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = RatingsSerializer(ratings, context={'request': request}, many=True)
+
+        return Response(serializer.ratings)
+
+    elif request.method == 'POST':
+        serializer = RatingsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
