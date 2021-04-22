@@ -17,7 +17,7 @@ class ConfirmRemovalModal extends Component {
   };
 
   deleteSongs = pk => {
-    axios.delete(API_URL + pk).then(() => {
+    axios.delete(API_URL + pk + '/').then(() => {
       this.props.resetState();
       this.toggle();
     });

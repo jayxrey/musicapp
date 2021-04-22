@@ -38,7 +38,7 @@ class NewSongForm extends React.Component {
 
   editSongs = e => {
     e.preventDefault();
-    axios.put(song_url + this.state.pk, this.state).then(() => {
+    axios.put(song_url + this.state.pk + '/', this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
