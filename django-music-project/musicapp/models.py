@@ -19,12 +19,10 @@ class Songs(models.Model):
         return self.song
 
 class Ratings(models.Model):
-    username = models(Users, on_delete=models.CASCADE)
     song = models.ForeignKey(Songs, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.rating
+
 
 class Price(models.Model):
     song = models.ForeignKey(Songs, on_delete=models.CASCADE)

@@ -10,7 +10,7 @@ class SongsAdmin(admin.ModelAdmin):
     list_display = ('song', 'artist', 'album','genre','year')
 
 class RatingsAdmin(admin.ModelAdmin):
-    list_display = ('username', 'song','rating')
+    list_display = ('song','rating')
 
 class PriceAdmin(admin.ModelAdmin):
     list_display = ('song', 'price')

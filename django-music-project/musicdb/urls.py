@@ -18,16 +18,9 @@ from django.urls import path, re_path
 from musicapp import views
 from django.conf.urls import url
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/songs/$', views.songs_list),
-<<<<<<< HEAD
-    re_path(r'^api/songs/(?P<pk>\d+)$', views.songs_detail),
-    re_path(r'^api/ratings/$', views.ratings_list),
-    re_path(r'^api/ratings/(song)$', views.ratings_detail),
-=======
     re_path(r'^api/songs/(?P<pk>\d+)/$', views.songs_detail),
-    re_path(r'^api/ratings/(?P<song>\d+)/$', views.songs_ratings_list),
->>>>>>> aff47da9f1a3e4b4d83a5a9c87d2d1de786beca9
+    re_path(r'^api/ratings/$', views.songs_ratings_list),
 ]
