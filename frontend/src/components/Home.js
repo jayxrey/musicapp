@@ -8,6 +8,7 @@ import RatingsModal from "./RatingsModal";
 import axios from "axios";
 
 import { API_URL } from "../constants";
+var song_url = "http://localhost:8000/api/ratings/"
 
 class Home extends Component {
   state = {
@@ -24,7 +25,7 @@ class Home extends Component {
   };
 
   getRatings = () => {
-    axios.get(API_URL).then(res => this.setState({ ratings: res.data }));
+    axios.get(song_url).then(res => this.setState({ ratings: res.data }));
   };
 
   resetState = () => {
