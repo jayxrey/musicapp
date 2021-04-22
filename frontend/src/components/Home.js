@@ -40,6 +40,7 @@ class Home extends Component {
           <Col>
             <SongList
               songs={this.state.songs}
+              ratings={this.state.ratings}
               resetState={this.resetState}
             />
           </Col>
@@ -47,14 +48,6 @@ class Home extends Component {
         <Row>
           <Col>
             <NewSongModal create={true} resetState={this.resetState} />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <RatingsList
-              ratings={this.state.ratings}
-              resetState={this.resetState}
-            />
           </Col>
         </Row>
       </Container>

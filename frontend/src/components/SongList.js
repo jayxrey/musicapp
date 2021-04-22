@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 import NewSongModal from "./NewSongModal";
+import RatingsModal from "./SongRatingListModal"
+
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
 class SongList extends Component {
   render() {
     const songs = this.props.songs;
+    const ratings = this.props.ratings;
     return (
       <Table dark>
         <thead>
@@ -22,7 +25,7 @@ class SongList extends Component {
         <tbody>
           {!songs || songs.length <= 0 ? (
             <tr>
-              <td colSpan="6" align="center">
+              <td colSpan="7" align="center">
                 <b>No songs entered</b>
               </td>
             </tr>
@@ -35,6 +38,12 @@ class SongList extends Component {
                 <td>{songs.genre}</td>
                 <td>{songs.year}</td>
                 <td align="center">
+                  <RatingsModal
+                    create={false}
+                    songs={songs}
+                    ratings={ratings}
+                    resetState={this.props.resetState}
+                  />
                   <NewSongModal
                     create={false}
                     songs={songs}

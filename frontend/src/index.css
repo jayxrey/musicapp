@@ -9,7 +9,7 @@ body {
     background-color: #282c34;
   }
   button {
-    margin: 5px;
+    margin: 20px;
     padding: 5px;
   }
   .artists-song {
@@ -19,7 +19,7 @@ body {
   .tab-list > span {
     padding: 5px 8px;
     border: 1px solid #282c34;
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 5px;
     /* Spans do not have margins on top or bottom.
        However, this can be fixed with an inline-block
