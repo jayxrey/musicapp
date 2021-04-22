@@ -21,5 +21,5 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api/songs/$', views.songs_list),
-    re_path(r'^api/songs/([0-9])$', views.songs_detail),
+    re_path(r'^api/songs/(?P<pk>\d+)/$', views.songs_detail),
 ]
