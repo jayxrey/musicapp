@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
-import NewSongForm from "./NewSongForm";
+import SongRatingsForm from "./SongRatingsForm";
 
 
 //ratings modal for the button that calls the window to pop up with all the
@@ -34,10 +34,11 @@ class RatingsModal extends Component {
           <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
 
           <ModalBody>
-            <NewSongForm
+            <SongRatingsForm
               resetState={this.props.resetState}
               toggle={this.toggle}
               songs={this.props.songs}
+              ratings={this.props.ratings}
             />
           </ModalBody>
         </Modal>

@@ -25,7 +25,7 @@ class SongList extends Component {
         <tbody>
           {!songs || songs.length <= 0 ? (
             <tr>
-              <td colSpan="7" align="center">
+              <td colSpan="6" align="center">
                 <b>No songs entered</b>
               </td>
             </tr>

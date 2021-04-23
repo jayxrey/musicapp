@@ -23,4 +23,5 @@ urlpatterns = [
     re_path(r'^api/songs/$', views.songs_list),
     re_path(r'^api/songs/(?P<pk>\d+)/$', views.songs_detail),
     re_path(r'^api/ratings/$', views.songs_ratings_list),
+    re_path(r'^api/ratings/(?P<song>\d+)/$', views.song_rating_details),
 ]

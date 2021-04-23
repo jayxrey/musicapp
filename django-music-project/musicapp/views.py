@@ -65,6 +65,19 @@ def songs_ratings_list(request):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def song_rating_details(request, song):
+    if request.method == 'GET':
+        try:
+            data = Ratings.objects.filter(song= song)
+        except Songs.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = RatingsSerializer(data, context={'request': request}, many=True)
+
+        return Response(serializer.data)
+
+
 
 
 
