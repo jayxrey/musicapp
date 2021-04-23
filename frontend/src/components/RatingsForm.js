@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
+
 import axios from "axios";
 
 import { API_URL } from "../constants";
@@ -45,6 +46,11 @@ class RatingsForm extends React.Component {
   };
 
   render() {
+
+    if(!this.props.show){
+      return null;
+    }
+    else {
     return (
       <Form onSubmit={this.props.songs ? this.editRatings : this.createRatings}>
         <FormGroup>
@@ -77,7 +83,7 @@ class RatingsForm extends React.Component {
         <Button>Send</Button>
       </Form>
     );
-  }
+  }}
 }
 
 export default RatingsForm;
