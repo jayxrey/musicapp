@@ -89,7 +89,7 @@ class SongRatingsForm extends React.Component {
           <Fragment>
               {button}
               <Modal isOpen={this.state.modal} toggle={this.toggle}>
-              <ModalHeader toggle={this.toggle}>kek</ModalHeader>
+              <ModalHeader toggle={this.toggle}>Add Rating</ModalHeader>
                 <ModalBody>
                   <AddRating
                     resetState={this.props.resetState}
