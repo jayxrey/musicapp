@@ -39,9 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',            # add this
     'rest_framework',         # add this
-    'musicapp'
-
+    'musicapp',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'musicdb.utils.my_jwt_response_handler'
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',    # add this

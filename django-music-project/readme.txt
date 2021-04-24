@@ -7,6 +7,7 @@ python3 -m venv my-venv
 source my-venv/bin/activate
 pip3 install Django
 pip3 install djangorestframework
+python3 -m pip install djangorestframework-jwt
 python3 -m pip install django-cors-headers
 python3 manage.py runserver
 ```
