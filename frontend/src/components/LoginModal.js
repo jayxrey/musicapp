@@ -26,7 +26,7 @@ class LoginModal extends Component {
           color="primary"
           className="float"
           onClick={this.toggle}
-          style={{ minWidth: "70px" }}
+          style={{ minWidth: "70px", margin: "20px" }}
         >
           Login
         </Button>
@@ -44,6 +44,7 @@ class LoginModal extends Component {
               resetState={this.props.resetState}
               toggle={this.toggle}
               users={this.props.users}
+              logged_in = {this.props.logged_in}
             />
           </ModalBody>
         </Modal>

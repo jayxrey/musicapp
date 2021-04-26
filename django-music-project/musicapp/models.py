@@ -15,6 +15,7 @@ class Songs(models.Model):
 class Ratings(models.Model):
     song = models.ForeignKey(Songs, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
+    user = models.CharField(max_length=200)
 
 class Price(models.Model):
     song = models.ForeignKey(Songs, on_delete=models.CASCADE)

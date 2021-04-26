@@ -7,7 +7,8 @@ import axios from "axios";
 class LoginForm extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    logged_in: false
   };
 
   onChange = e => {
@@ -17,8 +18,10 @@ class LoginForm extends React.Component {
   handleLogin = e => {
     e.preventDefault();
     AuthService.login(this.state.username, this.state.password).then(() => {
+      console.log(localStorage.getItem("user"));
       this.props.resetState();
       this.props.toggle();
+      this.state.logged_in = true
     });
   };
 

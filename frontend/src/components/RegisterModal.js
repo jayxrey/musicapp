@@ -43,7 +43,6 @@ class RegisterModal extends Component {
             <RegisterForm
               resetState={this.props.resetState}
               toggle={this.toggle}
-              users={this.props.users}
             />
           </ModalBody>
         </Modal>

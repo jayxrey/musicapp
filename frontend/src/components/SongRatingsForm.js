@@ -60,7 +60,7 @@ class SongRatingsForm extends React.Component {
                 <tr>
                   <th>Song</th>
                   <th>Rating</th>
-                  <th></th>
+                  <th>User</th>
                 </tr>
               </thead>
               <tbody>
@@ -75,6 +75,7 @@ class SongRatingsForm extends React.Component {
                     <tr key={ratings.song}>
                       <td>{this.state.song}</td>
                       <td>{ratings.rating}</td>
+                      <td>{ratings.user}</td>
                       <td align="center">
                       </td>
                     </tr>

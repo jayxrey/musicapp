@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-
+import authHeader from "./Auth-Header"
 
 import axios from "axios";
 
@@ -27,7 +27,7 @@ class RatingsForm extends React.Component {
 
   createRatings = e => {
     e.preventDefault();
-    axios.post(API_URL, this.state).then(() => {
+    axios.post(API_URL, this.state, { headers: authHeader() }).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -35,7 +35,7 @@ class RatingsForm extends React.Component {
 
   editRatings = e => {
     e.preventDefault();
-    axios.put(API_URL + this.state.pk, this.state).then(() => {
+    axios.put(API_URL + this.state.pk, this.state, { headers: authHeader() }).then(() => {
       this.props.resetState();
       this.props.toggle();
     });

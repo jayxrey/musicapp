@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/";
+const API_URL = "http://localhost:8000/";
 
 class AuthService {
   login(username, password) {
@@ -10,16 +10,18 @@ class AuthService {
         password
       })
       .then(response => {
-        if (response.data.accessToken) {
+        if (response.data.user) {
           localStorage.setItem("user", JSON.stringify(response.data));
+          
         }
-
+        console.log(response.data);
         return response.data;
       });
   }
 
   logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
   }
 
   register(username, password) {
@@ -30,7 +32,7 @@ class AuthService {
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));;
+    return JSON.parse(localStorage.getItem("user").username);;
   }
 }
 

@@ -4,7 +4,7 @@ import AuthService from "./Authentication";
 
 import axios from "axios";
 
-const reg_url = "http://localhost:8080/users";
+const reg_url = "http://localhost:8000/";
 
 class RegisterForm extends React.Component {
   state = {
@@ -12,20 +12,14 @@ class RegisterForm extends React.Component {
     password: ""
   };
 
-  componentDidMount() {
-    if (this.props.users) {
-      const { username, password } = this.props.users;
-      this.setState({ username, password });
-    }
-  }
-
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleResgister = e => {
+  handleRegister = e => {
     e.preventDefault();
-    axios.post(reg_url, this.state). then(() => {
+    axios.post(reg_url + "users/", this.state).then(() => {
+      console.log(this.state);
       this.props.resetState();
       this.props.toggle();
     });

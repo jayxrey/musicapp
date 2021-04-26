@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-
+import authHeader from "./Auth-Header"
 import axios from "axios";
 
 import { API_URL } from "../constants";
@@ -11,8 +11,8 @@ class AddRating extends React.Component {
   state = {
     id: 0,
     rating: 0,
-    pk: 0
-
+    pk: 0,
+    user: ""
   };
 
   componentDidMount() {
@@ -23,6 +23,11 @@ class AddRating extends React.Component {
     if (this.props.ratings) {
       const { id, rating } = this.props.ratings;
       this.setState({ id, rating });
+    }
+    if (JSON.parse(localStorage.getItem("user"))) {
+      this.setState({
+        user: JSON.parse(localStorage.getItem("user")).user.username
+      })
     }
     console.log(this.props.songs)
   }
@@ -39,8 +44,11 @@ class AddRating extends React.Component {
     axios.put(rating_url, {
         id: this.state.id,
         song: this.state.pk,
-        rating: this.state.rating
-    }).then((res) => {
+        rating: this.state.rating,
+        user: this.state.user
+        
+    },
+    { headers: authHeader() }).then((res) => {
         console.log(res);
         console.log(res.data);
       this.props.resetState();

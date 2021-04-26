@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Modal, ModalHeader, Button, ModalFooter } from "reactstrap";
-
+import authHeader from "./Auth-Header"
 import axios from "axios";
 
 import { API_URL } from "../constants";
@@ -17,7 +17,7 @@ class ConfirmRatingDeleteModal extends Component {
   };
 
   deleteRatings = song => {
-    axios.delete(API_URL + song).then(() => {
+    axios.delete(API_URL + song, {headers: authHeader()}).then(() => {
       this.props.resetState();
       this.toggle();
     });

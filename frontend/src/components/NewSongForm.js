@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-
+import authHeader from "./Auth-Header"
 import axios from "axios";
 
 import { API_URL } from "../constants";
@@ -30,7 +30,7 @@ class NewSongForm extends React.Component {
 
   createSongs = e => {
     e.preventDefault();
-    axios.post(song_url, this.state).then(() => {
+    axios.post(song_url, this.state, { headers: authHeader() }).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -38,7 +38,7 @@ class NewSongForm extends React.Component {
 
   editSongs = e => {
     e.preventDefault();
-    axios.put(song_url + this.state.pk + '/', this.state).then(() => {
+    axios.put(song_url + this.state.pk + '/', this.state, { headers: authHeader() }).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
