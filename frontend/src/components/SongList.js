@@ -10,6 +10,7 @@ class SongList extends Component {
   render() {
     const songs = this.props.songs;
     const ratings = this.props.ratings;
+    const logged_in = this.props.logged_in;
     return (
       <Table dark>
         <thead>
@@ -26,7 +27,7 @@ class SongList extends Component {
           {!songs || songs.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
-                <b>No songs entered</b>
+                <b>{logged_in ? "No songs entered" : 'please register and login to view data'}</b>
               </td>
             </tr>
           ) : (

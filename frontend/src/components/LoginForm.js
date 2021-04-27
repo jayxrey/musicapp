@@ -8,7 +8,8 @@ class LoginForm extends React.Component {
   state = {
     username: "",
     password: "",
-    logged_in: false
+    logged_in: false,
+    error: ""
   };
 
   onChange = e => {
@@ -17,12 +18,18 @@ class LoginForm extends React.Component {
 
   handleLogin = e => {
     e.preventDefault();
-    AuthService.login(this.state.username, this.state.password).then(() => {
+    if (this.state.username, this.state.password)
+    AuthService.login(this.state.username, this.state.password)
+    .then(() => {
       console.log(localStorage.getItem("user"));
       this.props.resetState();
       this.props.toggle();
       this.state.logged_in = true
+    })
+    .catch (() => {
+      this.setState({error: "Wrong username or password. Register Fist."})
     });
+
   };
 
 
@@ -36,6 +43,7 @@ class LoginForm extends React.Component {
             name="username"
             onChange={this.onChange}
             value={this.state.username}
+            required
             />
         </FormGroup>
         <FormGroup>
@@ -45,8 +53,10 @@ class LoginForm extends React.Component {
             name="password"
             onChange={this.onChange}
             value={this.state.password}
+            required
           />
         </FormGroup>
+        <p>{this.state.error}</p>
         <Button>Send</Button>
       </Form>
     );

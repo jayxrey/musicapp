@@ -35,7 +35,13 @@ class Home extends Component {
   }
 
   getSongs = () => {
-    axios.get(API_URL, { headers: authHeader() } ).then(res => this.setState({ songs: res.data}));
+    axios.get(API_URL, { headers: authHeader() } )
+    .then(res => this.setState({ songs: res.data}))
+    .catch(() => {
+      this.setState ({
+        logged_in: false
+      })
+    })
   };
 
   getRatings = () => {
@@ -67,6 +73,7 @@ class Home extends Component {
               songs={this.state.songs}
               ratings={this.state.ratings}
               resetState={this.resetState}
+              logged_in = {this.state.logged_in}
             />
           </Col>
         </Row>

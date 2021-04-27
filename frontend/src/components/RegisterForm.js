@@ -9,7 +9,8 @@ const reg_url = "http://localhost:8000/";
 class RegisterForm extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    error: ""
   };
 
   onChange = e => {
@@ -22,12 +23,18 @@ class RegisterForm extends React.Component {
       console.log(this.state);
       this.props.resetState();
       this.props.toggle();
+    })
+    .catch(() => {
+      this.setState({ error: "Please enter a correct username"})
     });
   };
 
   render() {
+    const details = "Please enter username without special characters"
     return (
+      
       <Form onSubmit={this.handleRegister}>
+        <p>{details}</p>
         <FormGroup>
           <Label for="username">Username</Label>
           <Input
@@ -35,6 +42,7 @@ class RegisterForm extends React.Component {
             name="username"
             onChange={this.onChange}
             value={this.state.username}
+            required
             />
         </FormGroup>
         <FormGroup>
@@ -44,8 +52,10 @@ class RegisterForm extends React.Component {
             name="password"
             onChange={this.onChange}
             value={this.state.password}
+            required
           />
         </FormGroup>
+        <p>{this.state.error}</p>
         <Button>Send</Button>
       </Form>
     );

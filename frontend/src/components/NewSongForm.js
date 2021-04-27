@@ -58,6 +58,7 @@ class NewSongForm extends React.Component {
             name="song"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.song)}
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -67,6 +68,7 @@ class NewSongForm extends React.Component {
             name="artist"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.artist)}
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -76,6 +78,7 @@ class NewSongForm extends React.Component {
               name="album"
               onChange={this.onChange}
               value={this.defaultIfEmpty(this.state.album)}
+              required
           />
         </FormGroup>
         <FormGroup>
@@ -85,15 +88,17 @@ class NewSongForm extends React.Component {
               name="genre"
               onChange={this.onChange}
               value={this.defaultIfEmpty(this.state.genre)}
+              required
           />
         </FormGroup>
         <FormGroup>
           <Label for="year">Year</Label>
             <Input
-              type="text"
+              type="number"
               name="year"
               onChange={this.onChange}
               value={this.defaultIfEmpty(this.state.year)}
+              required
           />
         </FormGroup>
         <Button>Send</Button>

@@ -73,6 +73,9 @@ class AddRating extends React.Component {
             name="rating"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.rating)}
+            required
+            min='0'
+            max='5'
           />
         </FormGroup>
         <Button>Send</Button>
