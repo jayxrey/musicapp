@@ -1,1 +1,1 @@
-web: gunicorn jkmusicapp.wsgi --log-file -
+web: gunicorn musicdb.wsgi --log-file -
